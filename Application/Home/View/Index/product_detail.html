@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="description" content="页面描述"/>
+		<meta name="keywords" content="关键字,关键字"/>
+		<meta name="robots" content="index,follow"/>
+		<meta name="renderer" content="webkit">
+		<title>{$pro.pro_title}</title>
+		<link rel="stylesheet" type="text/css" href="__CSS__global.css"/>
+		<link rel="stylesheet" type="text/css" href="__CSS__goods.detail.css"/>
+	</head>
+	<body>
+		<include file="Common/header" />
+		<div class="center-block">
+			<div class="n_nav cl">
+				<a href="" class="all">所有商品分类</a>
+				<a href="/index.php/Home/Index/index" class="a_nav">商城首页</a>
+				<a href="/index.php/Home/Index/search_product.html?search=食品饮料" class="a_nav">食品饮料</a>
+				<a href="/index.php/Home/Index/search_product.html?search=特色收藏" class="a_nav">特色收藏</a>
+				<a href="/index.php/Home/Index/search_product.html?search=成人专区" class="a_nav">成人专区</a>
+				<a href="" class="a_nav">秀家</a>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<input type="hidden" name="" id="pro_sku" value="{$pro.pro_sku}">
+		<div class="center-block">
+			<div class="goods_detail section1 cl">
+				<div class="left fl">
+					<div class="pic_wrap"><img src="{$pro.pro_thumb}"/></div>
+					<div class="pics cl">
+						<foreach name="pro.pro_picture" key="key" item="val">
+						<a href="javascript:;" <?php if(!$key){echo 'class="on fl"';}else{echo 'class="fl"';} ?> ><img src="{$val}"/></a>
+						</foreach>
+					</div>
+				</div>
+				<div class="center fl">
+					<div class="goods_name">{$pro.pro_title}</div>
+					<p>{$pro.pro_subhead}</p>
+					<div class="goods_info">
+						<div class="row cl">
+							<span class="l fl">价格</span>
+							<p class="p1 fl"><s>￥{$pro.pro_cost_price}</s> {$pro.pro_current_price}元</p>
+						</div>
+						<div class="row cl">
+							<span class="l fl">促销价</span>
+							<p class="p2 fl"><span class="m">￥</span>{$pro.pro_promotion_price}</p>
+						</div>
+						<div class="row cl">
+							<!-- <span class="l fl">商城活动</span> -->
+							<!-- <p class="p3 fl">满100元 包邮</p> -->
+						</div>
+						<div class="posa1">
+							<span>{$pro.pro_discuss}</span>
+							<p>累计评论</p>
+						</div>
+						<div class="posa2">
+							<span>{$pro.pro_deal}</span>
+							<p>交易成功</p>
+						</div>
+					</div>
+					<div class="city">
+						<div class="cl">
+							<span class="fl">运费</span>
+							<div class="fl cl">
+								<span class="fl">上海</span>
+								<span class="fl" style="padding: 0 3px;">至</span>
+								<select class="fl" id="seachprov" name="seachprov" onChange="changeComplexProvince(this.value, sub_array, 'seachcity', 'seachdistrict');"></select><select class="fl" id="seachcity" name="homecity" onChange="changeCity(this.value,'seachdistrict','seachdistrict');"></select><span class="fl" id="seachdistrict_div"><select id="seachdistrict" name="seachdistrict"></select></span>
+							</div>
+						</div>
+						<div>
+							<span>( 卖家承诺72小时内发货)</span>
+							<!-- <span>快递：{$pro.pro_freight}</span> -->
+						</div>
+					</div>
+					<div class="select">
+						<foreach name="pro.pro_attribute" key="key" item="val">
+						<div class="row1 cl">
+							<span class="fl">{$key}</span>
+							<p class="select_version fl cl">
+								<foreach name="val" item="v">
+								<a class="fl attr" href="javascript:;">{$v}</a>
+								</foreach>
+							</p>
+						</div>
+						</foreach>
+						<div class="row2 cl">
+							<span class="fl">数量</span>
+							<div class="fl">
+								<div class="num select_num cl">
+									<a href="javascript:;" class="fl s">─</a>
+									<input type="text" class="fl" value="1" id="num" />
+									<a href="javascript:;" class="fl a">+</a>
+								</div>
+							</div>
+							<p class="fl">件（库存{$pro.pro_stocknum}件）</p>
+						</div>
+					</div>
+					<div class="buy">
+						<input type="hidden" name="" id="sku" value="{$pro.pro_sku}">
+						<a class="a1" id="sub">立即购买</a>
+						<a href="javascript:;" class="a2" id="spcart">加入购物车</a>
+					</div>
+					<div class="tags">
+						<p class="p1">
+							<span>服务承诺</span>
+							<span>正品保证</span>
+							<span>按时发货</span>
+							<span>极速退款</span>
+						</p>
+						<p class="p2">
+							<span>支付方式</span>
+							<span class="span1">快捷支付</span>
+							<span class="span2">支付宝支付</span>
+						</p>
+					</div>
+					<div class="opera">
+						<a href="" class="a1">收藏宝贝 (11448人气)</a>
+						<a href="" class="a2">分享</a>
+					</div>
+				</div>
+				<div class="right fl">
+					<p class="title">-------- <span>看了又看</span> --------</p>
+					<foreach name="like" item="val">
+						<div class="look"><a href="/index.php/Home/Index/product_detail.html?search={$val.pro_title}&pro_sku={$val.pro_sku}">
+							<div class="pic"><img class="adapt" src="{$val.pro_thumb}" /></div>
+							<p>¥{$val.pro_promotion_price}</p>
+							<p>{$val.pro_title}</p>
+						</a></div>
+					</foreach>
+				</div>
+			</div>
+			<div class="section2 cl">
+				<div class="left fl">
+					<div class="title">商城热销</div>
+					<ul>
+						<foreach name="hot" key="key" item="val">
+							<li><a href="/index.php/Home/Index/product_detail.html?search={$val.pro_title}&pro_sku={$val.pro_sku}">
+								<div class="pic"><img class="adapt" src="{$val.pro_thumb}"/></div>
+								<p>{$val.pro_title}</p>
+								<div class="if cl">
+									<span class="span1 fl">{$key+1}</span>
+									<span class="span2 fl">热销{$val.pro_deal}件</span>
+									<span class="span3 fr">￥{$val.pro_promotion_price}</span>
+								</div>
+							</a></li>
+						</foreach>
+					</ul>
+				</div>
+				<div class="center fl">
+					<ul class="tab cl">
+						<li class="on detail"><a href="javascript:;">宝贝详情</a></li>
+						<li class="discuss"><a href="javascript:;">累计评价<span><?php echo htmlspecialchars($pro['pro_discuss']); ?></span></a></li>
+						<li id="deal"><a href="javascript:;">成交记录<span>{$pro.pro_deal}</span></a></li>
+						<li><a href="">专想服务</a></li>
+					</ul>
+					<div class="goods_info">
+					        	<?php 
+            $str  =stripslashes($pro['pro_introduction']);
+            echo htmlspecialchars_decode($str); 
+            ?>
+					
+					</div>
+					<div class="comments">
+						<div class="title discuss_title">累计评价<span>{$pro.pro_discuss}</span></div>
+						<div class="score cl">
+							<div class="fl left">
+								<span class="xx"><span>★★★★</span>★</span> 4.0分
+							</div>
+							<div class="fl right">
+								<ul class="cl">
+									<li>
+										<p>描述相符：</p>
+										<span class="xx"><span>★★★★★</span></span> 5.0分
+									</li>
+									<li>
+										<p>价格合理：</p>
+										<span class="xx"><span>★★★★</span>★</span> 4.8分
+									</li>
+									<li>
+										<p>质量满意：</p>
+										<span class="xx"><span>★★★★</span>★</span> 4.7分
+									</li>
+									<li>
+										<p>服务周到：</p>
+										<span class="xx"><span>★★★★</span>★</span> 4.6分
+									</li>
+								</ul>
+							</div>
+						</div>
+						<!-- <div class="c_tags">
+							<a href="javascript:;">款式好 (33)</a>
+							<a href="javascript:;">卖家服务很好 (26)</a>
+							<a href="javascript:;">质量很好 (24)</a>
+							<a href="javascript:;">很厚实 (19)</a>
+							<a href="javascript:;">颜色正 (18)</a>
+							<a href="javascript:;">料子很不错 (6)</a>
+							<a href="javascript:;">性价比高 (6)</a>
+							<a href="javascript:;">发货速度快 (4)</a>
+							<a href="javascript:;">整体感觉不错 (3)</a>
+							<a href="javascript:;">物流快 (3)</a>
+							<a href="javascript:;">尺寸无偏差 (3)</a>
+							<a href="javascript:;" class="hui">有点薄 (9)</a>
+							<a href="javascript:;" class="hui">尺码不准 (6)</a>
+							<a href="javascript:;" class="hui">有色差 (5)</a>
+							<a href="javascript:;" class="hui">物流有点慢 (4)</a>
+						</div> -->
+						<!-- <div class="radio cl">
+							<input type="radio" name="comments" id="comments1" checked="checked"/><label for="comments1">全部</label>
+							<input type="radio" name="comments" id="comments2"/><label for="comments2">图片 (113)</label>
+							<input type="radio" name="comments" id="comments3"/><label for="comments3">追评 (22)</label>
+							<input type="radio" name="comments" id="comments4"/><label for="comments4">好评 (465)</label>
+							<input type="radio" name="comments" id="comments5"/><label for="comments5">中评 (16)</label>
+							<input type="radio" name="comments" id="comments6"/><label for="comments6">差评（2）</label>
+						</div> -->
+						<ul class="message">
+							<foreach name="comment" item="val">
+								<li class="cl">
+									<div class="fl head_pic">
+										<div class="pic"><img class="adapt" src="__IMAGES__13.jpg"/></div>
+										<p>{$val.cmt_user}</p>
+									</div>
+									<div class="messageContent fl">
+										<p>{$val.cmt_content}</p>
+										<div class="illustrations"><img class="adapt" src="__IMAGES__14.jpg"/></div>
+									</div>
+									<div class="date fr">评论时间：{$val.cmt_addtime|date="Y-m-d H:m",###}</div>
+								</li>
+							</foreach>
+						</ul>
+					</div>
+					<!--  售后评价 <div class="deal">
+						<div class="div">
+							<span class="td1">买家</span>
+							<span class="td2">款式/型号</span>
+							<span class="td3">数量</span>
+							<span class="td4">成交时间</span>
+						</div>
+						<div>
+							<span class="td1">丿灬依丶小念</span>
+							<span class="td2">颜色分类:白色<br /></span>
+							<span class="td3">1</span>
+							<span class="td4">2016-01-13<br />14:42:08</span>
+						</div>
+						<div>
+							<span class="td1">阳**2</span>
+							<span class="td2">颜色分类:白色<br />鞋码:37.5</span>
+							<span class="td3">1</span>
+							<span class="td4">2016-01-13<br />14:42:08</span>
+						</div>
+						<div>
+							<span class="td1">阳**2</span>
+							<span class="td2">颜色分类:白色<br />鞋码:37.5</span>
+							<span class="td3">1</span>
+							<span class="td4">2016-01-13<br />14:42:08</span>
+						</div>
+						<div>
+							<span class="td1">阳**2</span>
+							<span class="td2">颜色分类:白色<br />鞋码:37.5</span>
+							<span class="td3">1</span>
+							<span class="td4">2016-01-13<br />14:42:08</span>
+						</div>
+						<div>
+							<span class="td1">阳**2</span>
+							<span class="td2">颜色分类:白色<br />鞋码:37.5</span>
+							<span class="td3">1</span>
+							<span class="td4">2016-01-13<br />14:42:08</span>
+						</div>
+						<div>
+							<span class="td1">阳**2</span>
+							<span class="td2">颜色分类:白色<br />鞋码:37.5</span>
+							<span class="td3">1</span>
+							<span class="td4">2016-01-13<br />14:42:08</span>
+						</div>
+					</div>
+				</div> -->
+				<div class="right fl"></div>
+			</div>
+		</div>
+	<include file="Common/footer" />
+<script type="text/javascript" src="__JS__jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="__JS__js.js"></script>
+<script src="__JS__Area.js" type="text/javascript"></script>
+<script src="__JS__AreaData_min.js" type="text/javascript"></script>
+<script src="__JS__jQuerySession.js" type="text/javascript"></script>
+<script type="text/javascript">
+$(function (){
+	initComplexArea('seachprov', 'seachcity', 'seachdistrict', area_array, sub_array, '0', '0', '0');
+});
+$('.discuss').click(function(){
+	$(this).addClass('on');
+	$(this).siblings().removeClass();
+	$('.goods_info,.discuss_title').css('display','none');
+	$('.comments').css('display','block');
+})
+$('.detail').click(function(){
+	$(this).addClass('on');
+	$(this).siblings().removeClass('on');
+	$('.goods_info').css('display','block');
+});
+$('.attr').click(function(){
+	$(this).css('border','2px solid #be0106').addClass('as');
+	$(this).siblings().css('border','none').removeClass('as');
+})
+$('#deal').click(function(){
+	$(this).addClass('on').siblings().removeClass('on');
+	$('.goods_info,.comments').css('display','none');
+})
+$('#sub').click(function(){
+	// var attr = {};
+	var attr = '';
+		length = $('.as').length;
+		for(var i=0;i<length;i++){
+			attr += $('.select').children().find('.as').eq(i).text()+'+';
+		}
+		num = $('#num').val();
+	$.session.set('attr',attr);
+	$.session.set('num',num);
+	location.href="/index.php/Home/Index/orders.html?title={$pro.pro_title}&sku={$pro.pro_sku}&num="+num;
+})
+$('#spcart').click(function(){
+	var num = $('#num').val();
+		sku = $('#sku').val();
+	location.href="/index.php/Home/Index/pro_shopping_cart.html?sku="+sku+"&num="+num;
+})
+//得到地区码
+function getAreaID(){
+	var area = 0;          
+	if($("#seachdistrict").val() != "0"){
+		area = $("#seachdistrict").val();                
+	}else if ($("#seachcity").val() != "0"){
+		area = $("#seachcity").val();
+	}else{
+		area = $("#seachprov").val();
+	}
+	return area;
+}
+
+function showAreaID() {
+	//地区码
+	var areaID = getAreaID();
+	//地区名
+	var areaName = getAreaNamebyID(areaID) ;
+	alert("您选择的地区码：" + areaID + "      地区名：" + areaName);            
+}
+
+//根据地区码查询地区名
+function getAreaNamebyID(areaID){
+	var areaName = "";
+	if(areaID.length == 2){
+		areaName = area_array[areaID];
+	}else if(areaID.length == 4){
+		var index1 = areaID.substring(0, 2);
+		areaName = area_array[index1] + " " + sub_array[index1][areaID];
+	}else if(areaID.length == 6){
+		var index1 = areaID.substring(0, 2);
+		var index2 = areaID.substring(0, 4);
+		areaName = area_array[index1] + " " + sub_array[index1][index2] + " " + sub_arr[index2][areaID];
+	}
+	return areaName;
+}
+</script>

@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="页面描述"/>
+	<meta name="keywords" content="关键字,关键字"/>
+	<meta name="robots" content="index,follow"/>
+	<meta name="renderer" content="webkit">
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="__CSS__global.css"/>
+	<link rel="stylesheet" type="text/css" href="__CSS__account.info.css"/>
+	<script src="__JS__jquery-1.6.2.min.js"></script>
+</head>
+<body>
+	<include file="Common/header" />
+	<div class="center-block cl">
+		<div class="m_left member_menu fl">
+			<div class="member_pic"><img src="{$member.vip_avatar}" style="width:115px;" /></div>
+			<p class="member_name">{$user}</p>
+			<ul class="member_info_list">
+				<li><a href="/index.php/Home/User/index">用户信息</a></li>
+				<li><a href="/index.php/Home/User/my_order">我的订单</a></li>
+				<li><a href="/index.php/Home/User/shopping_cart">购物车</a></li>
+				<li><a href="/index.php/Home/User/address">收货地址</a></li>
+				<!--<li><a href="">我的收藏</a></li>-->
+				<li><a href="/index.php/Home/User/comment">我的评论</a></li>
+				<li class="on"><a href="/index.php/Home/User/member_center">帐号信息</a></li>
+			</ul>
+		</div>
+		<div class="m_right fr">
+			<div class="title">帐户信息</div>
+			<form action="" method="post" name="form0" id="form0" enctype="multipart/form-data">
+				<div class="div1 cl">
+					<div class="fl div1">当前头像：</div>
+					<div class="fl div2"><img class="adapt" src="{$member.vip_avatar}" style="width:115px" id="img0"/></div>
+					<div class="fl div3"><a href="javascript:;" id="change">更改<input type="file" name="file0" id="file0" multiple="multiple" /></a><a href="">保存</a></div>
+				</div>
+				<div class="div2 cl">
+					<div class="f_name fl">昵称：</div>
+					<div class="f_input"><input type="text" placeholder="必填" value="{$member.vip_username}" name="user" /><span>*</span></div>
+				</div>
+				<div class="div4 cl">
+					<div class="f_name fl">性别：</div>
+					<div class="f_input">
+						<input type="radio" name="sex" id="male" value="男" />男
+						<input type="radio" name="sex" id="female" value="女" />女
+						<span>*</span>
+					</div>
+				</div>
+				<div class="div5 cl">
+					<div class="f_name fl">生日：</div>
+					<div class="f_input"><input class="laydate-icon" type="text" id="birthday" placeholder="{$member.vip_birthday}" name="birthday" autocomplete="off" readonly="true"/></div>
+				</div>
+
+				<div class="div2 cl">
+					<div class="f_name fl">电话：</div>
+					<div class="f_input"><input type="text" placeholder="" value="{$member.vip_tel}" name="tel" /><span></span></div>
+				</div>				
+				<!-- <div class="div6 cl">
+					<div class="f_name fl">居住地：</div>
+					<div class="f_input cl">
+						<select class="fl" id="seachprov1" name="seachprov1" onChange="changeComplexProvince(this.value, sub_array, 'seachcity1', 'seachdistrict1');"></select><select class="fl" id="seachcity1" name="homecity1" onChange="changeCity(this.value,'seachdistrict1','seachdistrict1');"></select><select id="seachdistrict1" name="seachdistrict1"></select>
+					</div>
+				</div>
+				<div class="div7 cl">
+					<div class="f_name fl">家乡：</div>
+					<div class="f_input">
+						<select class="fl" id="seachprov2" name="seachprov2" onChange="changeComplexProvince(this.value, sub_array, 'seachcity2', 'seachdistrict2');"></select><select class="fl" id="seachcity2" name="homecity2" onChange="changeCity(this.value,'seachdistrict2','seachdistrict2');"></select><select id="seachdistrict2" name="seachdistrict2"></select>
+					</div>
+				</div> -->
+				<input type="submit" value="保存修改"/>
+			</form>
+		</div>
+	</div>
+	<include file="Common/footer" />
+</body>
+</html>
+<script type="text/javascript" src="__JS__jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="__JS__laydate.js"></script>
+<script type="text/javascript" src="__JS__js.js"></script>
+<script type="text/javascript" src="__JS__Area.js"></script>
+<script type="text/javascript" src="__JS__AreaData_min.js"></script>
+<script type="text/javascript">
+$("#file0").change(function(){
+	var objUrl = getObjectURL(this.files[0]) ;
+	console.log("objUrl = "+objUrl) ;
+	if (objUrl) {
+		$("#img0").attr("src", objUrl) ;
+	}
+}) ;
+//建立一個可存取到該file的url
+function getObjectURL(file) {
+	var url = null ; 
+	if (window.createObjectURL!=undefined) { // basic
+		url = window.createObjectURL(file) ;
+	} else if (window.URL!=undefined) { // mozilla(firefox)
+		url = window.URL.createObjectURL(file) ;
+	} else if (window.webkitURL!=undefined) { // webkit or chrome
+		url = window.webkitURL.createObjectURL(file) ;
+	}
+	return url ;
+}
+laydate.skin('molv');
+laydate({elem: '#birthday'});
+$(function (){
+	initComplexArea('seachprov1', 'seachcity1', 'seachdistrict1', area_array, sub_array, '0', '0', '0');
+	initComplexArea('seachprov2', 'seachcity2', 'seachdistrict2', area_array, sub_array, '0', '0', '0');
+});
+</script>

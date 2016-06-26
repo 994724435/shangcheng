@@ -1,0 +1,282 @@
+/**
+ * 2016.1.11  编辑下的subhead的value
+ */
+
+<include file="Common/header" />
+<script type="text/javascript" src="__JS__lanrenzhijia.js" ></script>
+<script type="text/javascript" src="__JS__zyUpload.js" ></script>
+<script type="text/javascript" src="__JS__zyFile.js" ></script>
+<link rel="stylesheet" href="__CSS__zyUpload.css" />
+<script language="JavaScript"> 
+
+
+//	location.reload( true);
+
+ 
+</script> 
+<style>
+  #preview{width:289px;height:93px;border:1px solid #cfcfcf;overflow:hidden;text-align: center;}
+  #imghead {filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=image);width:114px;height:104px;margin-top: 0;}
+  .fileimg input{
+    width: 100%;
+    height: 55px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+  }
+.same_height {
+    height: 98px;
+  line-height: 98px;
+}
+.article_submit {
+    background: url(__ROOT__/Public/Admin/images/article_xiugai.jpg) no-repeat;
+}  
+.add_img_c {
+    background: none;
+
+}
+.reflesh{
+	height: 33px;
+    width: 117px;
+    border: none;
+    float: left;
+    margin:35px 0 20px 280px;
+	background: url(/Public/Admin/images/relesh.png) no-repeat;
+}
+</style>
+<div class="rightfix">
+  <a class="home1"></a>
+  <a class="home_pass">产品管理</a>
+  <a class="home_now">图片修改</a>
+  <a href=""><input type="button" class="reflesh " value=""/></a>
+  <div class="clear"></div>
+ 	<div class="article_edit_list" style="width:1086px;height: 800px;">
+    <div style="width: 99.9%;border: 1px solid #CCCCCC;">
+    	<p style="margin: 10 0 10 500px;font-weight: bold;"><span>标题</span>：{$pro.pro_title}</p> 
+    </div>
+      <div class="clear"></div>
+      <div class="choose_sort same_height">
+      <div class="clear"></div>
+
+        <div class="thumbnail">
+          <div class="col_left f">缩略图1</div>
+          <div class="col_right f">
+            <div class="img_containner f">
+              <img id="imghead" src='{$pro.pro_photo1}' style="width: 114;float: left;">
+            </div>
+            <div class="add_img_c">
+              <div class="fileimg">
+              	<input type="file" onchange="previewImage(this)" name="ban_url"/>
+              	<input type="hidden" value="{$vo.pro_id}" name="pro_id" />
+              	<input type="hidden" value="pro_photo1" name="photo1" />
+              </div>
+            </div>
+	        <div class="cancle_save" style="padding-top:25px;">
+	       	  <a href="__ROOT__/Admin/Product/ProPic_load/pic/pro_photo1/id/{$pro.pro_id}"><input type="button" class="article_submit button_big" value="" /></a>
+	       	  
+	       
+	        </div>    
+          </div>
+           <div class="clear"></div> 
+      
+
+<!--pic start-->
+        <div class="thumbnail">
+          <div class="col_left f">缩略图2</div>
+          <div class="col_right f">
+            <div class="img_containner f">
+              <img id="imghead" src='{$pro.pro_photo2}' style="width: 114;float: left;">
+            </div>
+            <div class="add_img_c">
+              <div class="fileimg">
+              	<input type="file" onchange="previewImage(this)" name="ban_url"/>
+              	<input type="hidden" value="{$vo.pro_id}" name="pro_id" />
+              	<input type="hidden" value="pro_photo1" name="photo1" />
+              </div>
+            </div>
+	        <div class="cancle_save" style="padding-top: 25px;">
+	       	   <a href="__ROOT__/Admin/Product/ProPic_load/pic/pro_photo2/id/{$pro.pro_id}"><input type="button" class="article_submit button_big" value="" /></a>
+	        </div>    
+          </div>
+           <div class="clear"></div> 
+        </div>   
+<!--pic end -->
+
+<!--pic start 3-->
+        <div class="thumbnail">
+          <div class="col_left f">缩略图3</div>
+          <div class="col_right f">
+            <div class="img_containner f">
+              <img id="imghead" src='{$pro.pro_photo3}' style="width: 114;float: left;">
+            </div>
+            <div class="add_img_c">
+              <div class="fileimg">
+              	<input type="file" onchange="previewImage(this)" name="ban_url"/>
+              	<input type="hidden" value="{$vo.pro_id}" name="pro_id" />
+              	<input type="hidden" value="pro_photo1" name="photo1" />
+              </div>
+            </div>
+	        <div class="cancle_save" style="padding-top: 25px;">
+	       	   <a href="__ROOT__/Admin/Product/ProPic_load/pic/pro_photo3/id/{$pro.pro_id}"><input type="button" class="article_submit button_big" value="" /></a> 
+	        </div>    
+          </div>
+           <div class="clear"></div> 
+<!--pic end -->
+
+<!--pic start 4-->
+        <div class="thumbnail">
+          <div class="col_left f">缩略图4</div>
+          <div class="col_right f">
+            <div class="img_containner f">
+              <img id="imghead" src='{$pro.pro_photo4}' style="width: 114;float: left;">
+            </div>
+            <div class="add_img_c">
+              <div class="fileimg">
+              	<input type="file" onchange="previewImage(this)" name="ban_url"/>
+              	<input type="hidden" value="{$vo.pro_id}" name="pro_id" />
+              	<input type="hidden" value="pro_photo1" name="photo1" />
+              </div>
+            </div>
+	        <div class="cancle_save" style="padding-top: 25px;">
+	       	  <a href="__ROOT__/Admin/Product/ProPic_load/pic/pro_photo4/id/{$pro.pro_id}"><input type="button" class="article_submit button_big" value="" /></a>
+	        </div>    
+          </div>
+           <div class="clear"></div> 
+<!--pic end -->
+
+<!--pic start 5-->
+        <div class="thumbnail">
+          <div class="col_left f">缩略图5</div>
+          <div class="col_right f">
+            <div class="img_containner f">
+              <img id="imghead" src='{$pro.pro_photo5}' style="width: 114;float: left;">
+            </div>
+            <div class="add_img_c">
+              <div class="fileimg">
+              	<input type="file" onchange="previewImage(this)" name="ban_url"/>
+              	<input type="hidden" value="{$vo.pro_id}" name="pro_id" />
+              	<input type="hidden" value="pro_photo1" name="photo1" />
+              </div>
+            </div>
+	        <div class="cancle_save" style="padding-top: 25px;">
+	    <a href="__ROOT__/Admin/Product/ProPic_load/pic/pro_photo5/id/{$pro.pro_id}"><input type="button" class="article_submit button_big" value="" /></a> 
+	        </div>    
+          </div>
+           <div class="clear"></div> 
+<!--pic end -->
+          <div class="clear"></div>       
+          </div>   
+        </div>
+        <div class="clear"></div>
+        <div class="clear"></div>        
+      </div>
+     </form>
+
+<div class="clear"></div>
+  </div>
+<div class="clear"></div>
+<!--添加缩略图js-->
+<script type="text/javascript">
+//缩略图预览
+function previewImage(file){
+  var MAXWIDTH  = 117; 
+  var MAXHEIGHT = 120;
+  var div = document.getElementById('preview');
+  if (file.files && file.files[0]){
+    div.innerHTML ='<img id=imghead>';
+    var img = document.getElementById('imghead');
+    img.onload = function(){
+      var rect = clacImgZoomParam(MAXWIDTH, MAXHEIGHT, img.offsetWidth, img.offsetHeight);
+      img.width  =  rect.width;
+      img.height =  rect.height;
+//                 img.style.marginLeft = rect.left+'px';
+      // img.style.marginTop = rect.top+'px';
+    }
+    var reader = new FileReader();
+    reader.onload = function(evt){img.src = evt.target.result;}
+    reader.readAsDataURL(file.files[0]);
+  }else{  //兼容IE
+    var sFilter='filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale,src="';
+    file.select();
+    var src = document.selection.createRange().text;
+    div.innerHTML = '<img id=imghead>';
+    var img = document.getElementById('imghead');
+    img.filters.item('DXImageTransform.Microsoft.AlphaImageLoader').src = src;
+    var rect = clacImgZoomParam(MAXWIDTH, MAXHEIGHT, img.offsetWidth, img.offsetHeight);
+    status =('rect:'+rect.top+','+rect.left+','+rect.width+','+rect.height);
+    div.innerHTML = "<div id=divhead style='width:"+rect.width+"px;height:"+rect.height+"px;margin-top:"+rect.top+"px;"+sFilter+src+"\"'></div>";
+  }
+}
+
+function previewImage1(file){
+  var MAXWIDTH  = 117; 
+  var MAXHEIGHT = 120;
+  var div = document.getElementById('preview');
+  if (file.files && file.files[0]){
+    div.innerHTML ='<img id=imghead>';
+    var img = document.getElementById('imghead');
+    img.onload = function(){
+      var rect = clacImgZoomParam(MAXWIDTH, MAXHEIGHT, img.offsetWidth, img.offsetHeight);
+      img.width  =  rect.width;
+      img.height =  rect.height;
+//                 img.style.marginLeft = rect.left+'px';
+      // img.style.marginTop = rect.top+'px';
+    }
+    var reader = new FileReader();
+    reader.onload = function(evt){img.src = evt.target.result;}
+    reader.readAsDataURL(file.files[0]);
+  }else{  //兼容IE
+    var sFilter='filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale,src="';
+    file.select();
+    var src = document.selection.createRange().text;
+    div.innerHTML = '<img id=imghead>';
+    var img = document.getElementById('imghead');
+    img.filters.item('DXImageTransform.Microsoft.AlphaImageLoader').src = src;
+    var rect = clacImgZoomParam(MAXWIDTH, MAXHEIGHT, img.offsetWidth, img.offsetHeight);
+    status =('rect:'+rect.top+','+rect.left+','+rect.width+','+rect.height);
+    div.innerHTML = "<div id=divhead style='width:"+rect.width+"px;height:"+rect.height+"px;margin-top:"+rect.top+"px;"+sFilter+src+"\"'></div>";
+  }
+}
+function clacImgZoomParam( maxWidth, maxHeight, width, height ){
+  var param = {top:0, left:0, width:width, height:height};
+  if( width>maxWidth || height>maxHeight ){ 
+    rateWidth = width / maxWidth;
+    rateHeight = height / maxHeight;
+    if( rateWidth > rateHeight ){
+      param.width =  maxWidth;
+      param.height = Math.round(height / rateWidth);
+    }else{
+      param.width = Math.round(width / rateHeight);
+      param.height = maxHeight;
+    }
+  } 
+  param.left = Math.round((maxWidth - param.width) / 2);
+  param.top = Math.round((maxHeight - param.height) / 2);
+  return param;
+} 
+
+
+
+$(function(){
+  remove_thumbnail();
+})
+function remove_thumbnail(){
+  $(".thumbnail_close").click(function(){
+    $(this).parent().remove();
+    })
+}
+$(".article_cancel").click(function(){
+    window.history.go(-1);
+});
+
+//分类AJAX
+$("#cate").change(function(){var pid=$(this).val(); if(pid){$.post('/Admin/Product/cateAjax',{'pid':pid},function(data){$('#scate').empty().append('<option value="">未分类</option>'); for(i in data){$('#scate').append("<option value='"+data[i]['cate_id']+"'>"+data[i]['cate_name']+"</option>"); } },'json'); }else{$('#scate').empty().append('<option value="">未分类</option>'); } });
+
+//新建分类
+$(".newsorttext").click(function(){var sort = $(".newsort").val(); var cid = $("#cate").val(); $.post('/Admin/Product/sortAjax',{'sort':sort,'cid':cid},function(data){if(!cid){$('#cate').empty().append('<option value="">未分类</option>'); $('#scate').empty().append('<option value="">未分类</option>'); for(i in data){$('#cate').append("<option value='"+data[i]['cate_id']+"'>"+data[i]['cate_name']+"</option>"); } }else{$('#scate').empty().append('<option value="">未分类</option>'); for(i in data){$('#scate').append("<option value='"+data[i]['cate_id']+"'>"+data[i]['cate_name']+"</option>"); } } },'json'); });
+
+</script>
+<div class="bottom">声明：系统开发版权归重庆艾斯顿文化传媒有限公司所有，翻版必究</div>
+</body>
+<include file="Common/alert" />
+</html>

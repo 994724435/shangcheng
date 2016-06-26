@@ -1,0 +1,63 @@
+<div class="header">
+		<div class="head_top">
+			<div class="center-block cl">
+				<div class="left fl">
+					<span>您好，欢迎光临本站！</span>
+					<if condition="$user EQ ''">
+					<a href="/index.php/Home/User/login">请登录</a>
+					<a href="/index.php/Home/User/register">免费注册</a>
+					<else />
+					<a href="/index.php/Home/User/index">{$user}</a>
+					<a href="/index.php/Home/User/logout">退出</a>
+					</if>
+				</div>
+				<div class="right fr">
+					<a href="javacript:">我的优库</a>
+					<ul>
+						<li style="width:100px;"><a href="/index.php/Home/User/my_order">我的宝贝</a></li>
+					</ul>
+					<a href="/index.php/Home/User/shopping_cart">购物车</a>
+					<a href="/index.php/Home/User/my_order">我的订单</a>
+					<a href="/index.php/Home/User/help_center">帮助中心</a>
+					<a href="">收藏本站</a>
+					<!-- <span>服务热线：</span> -->
+				</div>
+			</div>
+		</div>
+		<div class="head_bottom center-block cl">
+			<div class="left logo fl">
+				<a href="/index.php/Home/Index/index"><img src="__IMAGES__logo.png" /></a>
+			</div>
+			<div class="center fl cl">
+				<div class="left fl"><img src="__IMAGES__2.png"/></div>
+				<div class="right fr">
+					<form action="" method="post" class="cl">
+						<input type="text" name="search" class="fl" id="search" placeholder="圣诞礼物提前购" />
+						<input type="button" class="fl" value="搜 索" id="tijiao"/>
+					</form>
+					<div class="keywords">
+						<a href="/index.php/Home/Index/search_product.html?search=新款女包" class="hot">新款女包</a>
+						<a href="/index.php/Home/Index/search_product.html?search=四件套">四件套</a>
+						<a href="/index.php/Home/Index/search_product.html?search=毛呢女外套" class="hot">毛呢女外套</a>
+						<a href="/index.php/Home/Index/search_product.html?search=坚果">坚果</a>
+						<a href="/index.php/Home/Index/search_product.html?search=起泡酒" class="hot">起泡酒</a>
+						<a href="/index.php/Home/Index/search_product.html?search=婚庆四件套">婚庆四件套</a>
+						<a href="/index.php/Home/Index/search_product.html?search=碧根果">碧根果</a>
+						<a href="/index.php/Home/Index/search_product.html?search=对联纸空白">对联纸空白</a>
+						<a href="/index.php/Home/Index/search_product.html?search=魔幻练字帖" class="hot">魔幻练字帖</a>
+					</div>
+				</div>
+			</div>
+			<div class="right fr cl">
+				<span class="fl">我的购物车</span>
+				<a href="/index.php/Home/User/shopping_cart.html" class="fl">（{$member.vip_shopping_count}）</a>
+			</div>
+		</div>
+	</div>
+<script type="text/javascript" src="__JS__jquery-1.11.3.min.js"></script>
+<script>
+	$('#tijiao').click(function(){
+		var search = $(this).prev().val();
+		location.href = "/index.php/Home/Index/search_product.html?search="+search;
+	})
+</script>

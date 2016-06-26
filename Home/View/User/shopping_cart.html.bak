@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="页面描述"/>
+	<meta name="keywords" content="关键字,关键字"/>
+	<meta name="robots" content="index,follow"/>
+	<meta name="renderer" content="webkit">
+	<title>我的购物车</title>
+	<link rel="stylesheet" type="text/css" href="__CSS__global.css"/>
+	<link rel="stylesheet" type="text/css" href="__CSS__my.order.css"/>
+</head>
+<style>
+	.m_right > div{
+		width:1000px;
+		height:140px;
+		border: 1px solid #eaeaea;
+		margin-bottom: 10px;
+	}
+	.m_right div div{
+		line-height: 140px;
+		float: left;
+	}
+	.m_right .thumb img{
+		width:115px;
+		height:115px;
+		margin-top: 13px;
+	}
+	.m_right .thumb{
+		width: 120px;
+	}
+	.m_right .check{
+		width: 40px;
+		text-align: center;
+	}
+	.m_right .title{
+		width: 500px;
+		margin-left: 20px;
+	}
+	.m_right .title a{
+		text-decoration: underline;
+	}
+	.m_right .title a:hover{
+		color: #f60;
+		text-decoration: underline;
+	}
+	.m_right .danjia{
+		width: 50px;
+		text-align: center;
+	}
+	.m_right .num{
+		width: 130px;
+		text-align: center;
+	}
+	.m_right .num a,input{
+		border: 1px solid #ccc;
+	}
+	.m_right .num a{
+		background: #e5e5e5;
+		color: black;
+	}
+	.m_right .num a:hover{
+		color: #f60;
+		border-color: #f60;
+	}
+	.m_right .num input{
+		width:50px;
+		height: 22px;
+	}
+	.m_right .price{
+		width: 140px;
+		text-align: center;
+	}
+	.m_right .top,.bottom{
+		border: none;
+	}
+	.m_right .top{
+		height: 50px;
+		line-height: 50px;
+	}
+	.m_right .top ul li{
+		float: left;
+	}
+	.m_right .bottom input{
+		width: 120px;
+		color: white;
+		line-height: 50px;
+		background: #f40;
+		border-radius: 5px;
+		font-size: 20px;
+		float: right;
+	}
+	.m_right .bottom span{
+		line-height: 50px;
+		float: right;
+		font-size: 16px;
+	}
+</style>
+<body>
+	<include file="Common/header" />
+	<div class="center-block cl">
+		<div class="m_left member_menu fl">
+			<div class="member_pic"><img src="{$member.vip_avatar}" style="width:115px;" /></div>
+			<p class="member_name">{$user}</p>
+			<ul class="member_info_list">
+				<li><a href="/index.php/Home/User/index">用户信息</a></li>
+				<li><a href="/index.php/Home/User/my_order">我的订单</a></li>
+				<li class="on"><a href="/index.php/Home/User/shopping_cart">购物车</a></li>
+				<li><a href="/index.php/Home/User/address">收货地址</a></li>
+				<!--<li><a href="">我的收藏</a></li>-->
+				<li><a href="/index.php/Home/User/comment">我的评论</a></li>
+				<li><a href="/index.php/Home/User/member_center">帐号信息</a></li>
+			</ul>
+		</div>
+		<if condition="$member['vip_shopping_count'] GT 0">
+		<div class="m_right fr">
+			<div class="top">
+				<ul>
+					<li class="check"><input type="checkbox" name="" id=""></li>
+					<li class="thumb">商品图</li>
+					<li class="title">商品名</li>
+					<li class="danjia">单价</li>
+					<li class="num">数量</li>
+					<li class="price">金额（元）</li>
+				</ul>
+			</div>
+			<foreach name="cart" item="val">
+				<div class="center"> 
+					<div class="check"><input type="checkbox" name="" id="" state="0"></div>
+					<div class="thumb"><img src="{$val.pro_thumb}" alt=""></div>
+					<div class="title"><a href="/index.php/Home/product_detail.html?search={$val.pro_title}&sku={$val.pro_sku}">{$val.pro_title}</a></div>
+					<div class="danjia">{$val.pro_promotion_price}</div>
+					<div class="num"><a href="javascript:;" class="lessen">&nbsp;-</a><input type="text" value="1" class="pro_num"><a href="javascript:;" class="add">+</a></div>
+					<div class="price">{$val.pro_promotion_price}</div>
+				</div>
+			</foreach>
+			<div class="bottom">
+				<input type="button" value="结 算" class="jiesuan">
+				<span>合计（含运费）：￥<span style="color:#f40;" class="total">0.00</span></span>
+			</div>
+		</div>
+		</if>
+	</div>
+	<script>
+		$('.add').click(function(){
+			$(this).prev().val(parseFloat($(this).prev().val())+1);
+			var danjia = $(this).parent().prev().text();
+				num = $(this).prev().val();
+			$(this).parent().next().text((parseFloat(danjia)*parseFloat(num)).toFixed(2));
+			if($(this).parent().prevAll().eq(3).children().attr('state')==1){
+				$('.total').text((parseFloat($('.total').text())+parseFloat(danjia)).toFixed(2));
+			}
+		})
+		$('.lessen').click(function(){
+			$(this).next().val(parseFloat($(this).next().val())-1);
+			var danjia = $(this).parent().prev().text();
+				num = $(this).next().val();
+			$(this).parent().next().text((parseFloat(danjia)*parseFloat(num)).toFixed(2));
+			if($(this).parent().prevAll().eq(3).children().attr('state')==1){
+				$('.total').text((parseFloat($('.total').text())-parseFloat(danjia)).toFixed(2));
+			}
+		})
+		$('.check').change(function(){
+			if($(this).children().attr('state')==0){
+				$(this).children().attr('state',1);
+				price = $(this).nextAll().eq(4).text();
+				$('.total').text((parseFloat($('.total').text())+parseFloat(price)).toFixed(2));
+			}else{
+				$(this).children().attr('state',0);
+				price = $(this).nextAll().eq(4).text();
+				$('.total').text((parseFloat($('.total').text())-parseFloat(price)).toFixed(2));
+			}
+		})
+		$('.pro_num').blur(function(){
+			var num = parseFloat($(this).val());
+				danjia = parseFloat($(this).parent().prev().text());
+				price = parseFloat($(this).parent().next().text());
+				$(this).parent().next().text((num*danjia).toFixed(2));
+			if($(this).parent().prevAll().eq(3).children().attr('state')==1){
+				$('.total').text((parseFloat($('.total').text())+price).toFixed(2));
+			}
+		})
+		$('.jiesuan').click(function(){
+			var price = $('.total').text();
+		})
+	</script>
+	<include file="Common/footer" />
+<script type="text/javascript" src="__JS__jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="__JS__js.js"></script>

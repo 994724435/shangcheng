@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="页面描述"/>
+	<meta name="keywords" content="关键字,关键字"/>
+	<meta name="robots" content="index,follow"/>
+	<meta name="renderer" content="webkit">
+	<title>宛美商城</title>
+	<link rel="stylesheet" type="text/css" href="__CSS__global.css"/>
+	<link rel="stylesheet" href="__CSS__index.css">
+</head>
+<body>
+<include file="Common/header" />
+	<div class="center-block">
+		<div class="n_nav cl">
+			<a href="" class="all">所有商品分类</a>
+			<a href="" class="a_nav">商城首页</a>
+			<a href="/index.php/Home/Index/search_product.html?search=食品饮料" class="a_nav">食品饮料</a>
+			<a href="/index.php/Home/Index/search_product.html?search=特色收藏" class="a_nav">特色收藏</a>
+			<a href="/index.php/Home/Index/search_product.html?search=成人专区" class="a_nav">成人专区</a>
+			<a href="" class="a_nav">秀家</a>
+			<div class="clear"></div>
+		</div>
+	</div>
+
+	<div class="center-block" style="position:relative">
+		<div class="more_nav">
+			<div class="sub_nav">
+				<ul class="sn_list">
+					<foreach name="cate" key="k" item="value">
+					<img src="{$value.cate_icon}" alt="">
+					<li class="navMap">
+						<a href="/index.php/Home/Index/search_product.html?search={$value.cate_name}" class="sn_title cl"><p>{$value.cate_name}</p><span>></span><div class="clear"></div></a>
+						<div class="f_nav">
+							<foreach name="value.cate_son" key="key" item="val">
+							<a href="/index.php/Home/Index/search_product.html?search={$val.cate_name}" <?php if($key%3==2){echo "class='fn_last'";} ?>>{$val.cate_name}</a>
+							</foreach>
+							<div class="clear"></div>
+						</div>
+					</li>
+					</foreach>
+					<li class="rj navMap">
+						<a href="" class="sn_title"><p>热荐</p><span>></span><div class="clear"></div></a>
+						<div class="f_nav">
+							<a href="/index.php/Home/Index/search_product.html?search=葡萄酒" >葡萄酒</a>
+							<a href="/index.php/Home/Index/search_product.html?search=红酒">红酒</a>
+							<a href="/index.php/Home/Index/search_product.html?search=起泡酒" class="fn_last">起泡酒</a>
+							<a href="/index.php/Home/Index/search_product.html?search=葡萄酒" >葡萄酒</a>
+							<a href="/index.php/Home/Index/search_product.html?search=红酒">红酒</a>
+							<a href="/index.php/Home/Index/search_product.html?search=起泡酒" class="fn_last">起泡酒</a>
+							<div class="clear"></div>
+						</div>
+					</li>
+				</ul>
+				<div class="tj">
+					<a href="" class="tj_color">热荐</a>
+					<a href="" class="">推荐</a>
+					<a href="" class="">特价</a>
+					<a href="" class="tj_last tj_color">团购</a>
+					<a href="" class="">套装</a>
+					<a href="" class="tj_color">体验馆</a>
+					<a href="" class="tj_last tj_color">新品</a>
+					<a href="" class="new"><img src="__IMAGES__new.png" alt="" ></a>
+					<div class="clear"></div>
+				</div>
+			</div>
+			<div class="third_nav_block">
+				<foreach name="cate" item="value">
+					<div class="third_nav">
+						<foreach name="value.cate_son" item="val">
+							<div class="tn_left">
+								<div class="tl">
+									<div class="tn_title">
+										<a href="/index.php/Home/Index/search_product.html?search={$val.cate_name}" class="tt_left">{$val.cate_name}</a><a href="/index.php/Home/Index/search_product.html?search={$val.cate_name}" class="tt_right">MORE+</a>
+										<div class="clear"></div>
+									</div>
+									<div class="tn_nav">
+										<foreach name="val.cate_son" item='v'>
+										<a href="/index.php/Home/Index/search_product.html?search={$v.cate_name}">{$v.cate_name}</a>
+										</foreach>
+										<div class="clear"></div>
+									</div>
+								</div>
+							</div>
+						</foreach>
+
+						<div class="clear"></div>
+					</div>
+				</foreach>
+			<div class="clear"></div>
+		</div>
+	</div>
+
+	<div id="slideBox" class="slideBox">
+		<div class="hd">
+			<ul><li></li><li></li><li></li></ul>
+		</div>
+		<div class="bd">
+			<ul>
+				<li><a href="" target="_blank"><img src="__IMAGES__banner.jpg" /></a></li>
+				<li><a href="" target="_blank"><img src="__IMAGES__banner.jpg" /></a></li>
+				<li><a href="" target="_blank"><img src="__IMAGES__banner.jpg" /></a></li>
+			</ul>
+		</div>
+
+		<!-- 下面是前/后按钮代码，如果不需要删除即可 -->
+		<a class="prev" href="javascript:void(0)"></a>
+		<a class="next" href="javascript:void(0)"></a>
+
+	</div>
+
+	<div class="recommend">
+		<div class="rec_main">
+			<h2>今日推荐<span>/ TODAY'S RECOMMENDATION</span></h2>
+			<div class="rm_tj">
+				<div class="rm_div1">
+					<ul class="rm_list">
+						<li class="rm_click"><a href=""><img src="__IMAGES__jrtj.png" alt=""><div class="rm_bg"><p>限时</p><p>100元</p></div></a></li>
+						<li><a href=""><img src="__IMAGES__jrtj.png" alt=""><div class="rm_bg"><p>限时</p><p>100元</p></div></a></li>
+						<li><a href=""><img src="__IMAGES__jrtj.png" alt=""><div class="rm_bg"><p>限时</p><p>100元</p></div></a></li>
+					</ul>
+					<ul class="xh_list">
+						<li class="rm_on"></li>
+						<li></li>
+						<li></li>
+					</ul>
+				</div>
+
+				<div class="rm_div2">
+					<a href=""><img src="__IMAGES__jrtj2.png" alt=""></a>
+				</div>
+				<div class="rm_div3">
+					<a href=""><img src="__IMAGES__jrtj3.png" alt=""></a>
+					<a href=""><img src="__IMAGES__jrtj4.png" alt=""></a>
+				</div>
+				<div class="clear"></div>
+			</div>
+			<div class="rm_ban">
+				<a href=""><img src="__IMAGES__ban_ad.png" alt=""></a>
+			</div>
+		</div>
+	</div>
+
+	<div class="first">
+		<div class="fir_main">
+			<h2>1F食品饮料<span>/ FOOD AND BEVERAGE</span></h2>
+			<div class="fm">
+				<div class="fm_div1">
+					<div class="fd1_top"><a href=""><img src="__IMAGES__spyl_03.png" alt=""></a></div>
+					<div class="fd1_middle">
+						<ul class="fm_list">
+							<foreach name="cate.0.cate_son" item="val">
+							<li style="background: url({$val.cate_icon}) no-repeat 0 2px"><a href="/index.php/Home/Index/search_product.html?search={$val.cate_name}">{$val.cate_name}</a></li>
+							</foreach>
+							<div class="clear"></div>
+						</ul>
+					</div>
+					<div class="fd1_bottom">
+						<foreach name="cate.0.cate_son" item="val">
+						<foreach name="val.cate_son" item="v">
+						<a href="/index.php/Home/Index/search_product.html?search={$v.cate_name}" class="fb_color">{$v.cate_name}</a>
+						</foreach>
+						</foreach>
+					</div>
+				</div>
+				<div class="fm_div2">
+					<div class="fd1">
+						<a href="/index.php/Home/Index/detail" target="_blank">
+							<img src="__IMAGES__fd1_03.png" alt="">
+						</a>
+					</div>
+					<div class="fd2">
+						<a href="" target="_blank">
+							<img src="__IMAGES__fd1_07.png" alt="">
+						</a>
+					</div>
+				</div>
+				<div class="fm_div3">
+					<div class="fd3">
+						<a href="" target="_blank">
+							<img src="__IMAGES__fd3_03.png" alt="">
+						</a>
+					</div>
+					<div class="fd4">
+						<a href="" target="_blank">
+							<img src="__IMAGES__fd4_03.png" alt="">
+						</a>
+					</div>
+				</div>
+				<div class="fm_div4">
+					<div class="fd5">
+						<a href="" target="_blank">
+							<img src="__IMAGES__fd1_03.png" alt="">
+						</a>
+					</div>
+					<div class="fd6">
+						<a href="" target="_blank">
+							<img src="__IMAGES__fd1_07.png" alt="">
+						</a>
+					</div>
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+	</div>
+
+	<div class="second">
+		<div class="sec_main">
+			<h2>2F特色收藏<span>/ CHARACTERISTIC COLLECTION</span></h2>
+			<div class="fm">
+				<div class="fm_div1">
+					<div class="fd1_top"><a href=""><img src="__IMAGES__2f.png" alt=""></a></div>
+					<div class="fd1_middle">
+						<ul class="fm_list">
+							<foreach name="cate.1.cate_son" item="val">
+							<li><a href="/index.php/Home/Index/search_product.html?search={$val.cate_name}">{$val.cate_name}</a></li>
+							</foreach>
+							<div class="clear"></div>
+						</ul>
+					</div>
+					<div class="fd1_bottom">
+						<foreach name="cate.1.cate_son" item="val">
+						<foreach name="val.cate_son" item="v">
+						<a href="" class="fb_color">{$v.cate_name}</a>
+						</foreach>
+						</foreach>
+					</div>
+				</div>
+				<div class="fm_div2">
+					<ul class="thi_list">
+						<foreach name="pro2" item="val">
+							<li>
+								<img src="{$val.pro_thumb}" alt="">
+								<div class="bg">
+									<a href="/index.php/Home/Index/product_detail.html?search={$val.pro_title}&pro_sku={$val.pro_sku}" class="ljgd">了解更多</a>
+									<a href="" class="sc">收藏</a>
+								</div>
+								<div class="jieshao">
+									<h4>¥<if condition="$val['pro_promotion_price'] EQ 0">{$val.pro_current_price}<else />{$val.pro_promotion_price}</if></h4>
+									<p>{$val.pro_title}</p>
+								</div>
+							</li>
+						</foreach>
+						<div class="clear"></div>
+					</ul>
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+	</div>
+
+ 	<div class="third">
+		<div class="thi_main">
+			<h2>3F成人专区<span>/ ADULT ZONE</span></h2>
+			<div class="fm">
+				<div class="fm_div1">
+					<div class="fd1_top"><a href=""><img src="__IMAGES__3f_34.png" alt=""></a></div>
+					<div class="fd1_middle">
+						<ul class="fm_list">
+							<foreach name="cate.2.cate_son" item="val">
+							<li><a href="/index.php/Home/Index/search_product.html?search={$val.cate_name}">{$val.cate_name}</a></li>
+							</foreach>
+							<div class="clear"></div>
+						</ul>
+					</div>
+					<div class="fd1_bottom">
+						<foreach name="cate.2.cate_son" item="val">
+						<foreach name="val.cate_son" item="v">
+						<a href="" class="fb_color">{$v.cate_name}</a>
+						</foreach>
+						</foreach>
+					</div>
+				</div>
+				<div class="fm_div2">
+					<ul class="thi_list">
+						<foreach name="pro3" item="val">
+							<li>
+								<img src="{$val.pro_thumb}" alt="">
+								<div class="bg">
+									<a href="" class="ljgd">了解更多</a>
+									<a href="" class="sc">收藏</a>
+								</div>
+								<div class="jieshao">
+									<h4>¥<if condition="$val['pro_promotion_price'] EQ 0">{$val.pro_current_price}<else />{$val.pro_promotion_price}</if></h4>
+									<p>{$val.pro_title}</p>
+								</div>
+							</li>
+						</foreach>
+						<div class="clear"></div>
+					</ul>
+				</div>
+				<div class="clear"></div>
+			</div>
+			<div class="rm_ban">
+				<a href=""><img src="__IMAGES__ban_ad.png" alt=""></a>
+			</div>
+		</div>
+	</div>
+	
+	<div class="brand">
+		<div class="bra_main">
+			<h2>热门品牌<span>/ HOT BRAND</span></h2>
+			<div class="bm">
+				<div class="bm_left">
+					<div class="bl_top">
+						<ul class="blt_list">
+							<li class="blt_click"><a href=""><img src="__IMAGES__brand_07.png" alt=""></a><div class="blt_bg"></div></li>
+							<li><a href=""><img src="__IMAGES__brand_07.png" alt=""></a><div class="blt_bg"></div></li>
+							<li><a href=""><img src="__IMAGES__brand_07.png" alt=""></a><div class="blt_bg"></div></li>
+						</ul>
+						<ul class="blx_list">
+							<li class="blx_click"></li>
+							<li></li>
+							<li></li>
+						</ul>
+					</div>
+					<div class="bl_bottom">
+						<p class="blb_p1">今日品牌</p>
+						<p class="blb_p2">CICOO<span class="p2_sp1">3.2</span><span class="p2_sp2">折起</span></p>
+					</div>
+				</div>
+				<div class="bm_right">
+					<ul class="br_list">
+						<li class="br_click">
+							<a href=""><img src="__IMAGES__rmpp_03.png" alt=""></a>
+							<div class="bg">
+								<a href="" class="ljgd">了解更多</a>
+							</div>
+						</li>
+						<li>
+							<a href=""><img src="__IMAGES__rmpp_03.png" alt=""></a>
+							<div class="bg">
+								<a href="" class="ljgd">了解更多</a>
+							</div>
+						</li>
+						<li>
+							<a href=""><img src="__IMAGES__rmpp_03.png" alt=""></a>
+							<div class="bg">
+								<a href="" class="ljgd">了解更多</a>
+							</div>
+						</li>
+						<li>
+							<a href=""><img src="__IMAGES__rmpp_03.png" alt=""></a>
+							<div class="bg">
+								<a href="" class="ljgd">了解更多</a>
+							</div>
+						</li>
+						<li>
+							<a href=""><img src="__IMAGES__rmpp_03.png" alt=""></a>
+							<div class="bg">
+								<a href="" class="ljgd">了解更多</a>
+							</div>
+						</li>
+						<li>
+							<a href=""><img src="__IMAGES__rmpp_03.png" alt=""></a>
+							<div class="bg">
+								<a href="" class="ljgd">了解更多</a>
+							</div>
+						</li>
+						<li>
+							<a href=""><img src="__IMAGES__rmpp_03.png" alt=""></a>
+							<div class="bg">
+								<a href="" class="ljgd">了解更多</a>
+							</div>
+						</li>
+						<li>
+							<a href=""><img src="__IMAGES__rmpp_03.png" alt=""></a>
+							<div class="bg">
+								<a href="" class="ljgd">了解更多</a>
+							</div>
+						</li>
+						<li>
+							<a href=""><img src="__IMAGES__rmpp_03.png" alt=""></a>
+							<div class="bg">
+								<a href="" class="ljgd">了解更多</a>
+							</div>
+						</li>
+						<li>
+							<a href=""><img src="__IMAGES__rmpp_03.png" alt=""></a>
+							<div class="bg">
+								<a href="" class="ljgd">了解更多</a>
+							</div>
+						</li>
+						<li>
+							<a href=""><img src="__IMAGES__rmpp_03.png" alt=""></a>
+							<div class="bg">
+								<a href="" class="ljgd">了解更多</a>
+							</div>
+						</li>
+						<li>
+							<a href=""><img src="__IMAGES__rmpp_03.png" alt=""></a>
+							<div class="bg">
+								<a href="" class="ljgd">了解更多</a>
+							</div>
+						</li>
+						<li>
+							<a href=""><img src="__IMAGES__rmpp_03.png" alt=""></a>
+							<div class="bg">
+								<a href="" class="ljgd">了解更多</a>
+							</div>
+						</li>
+						<li>
+							<a href=""><img src="__IMAGES__rmpp_03.png" alt=""></a>
+							<div class="bg">
+								<a href="" class="ljgd">了解更多</a>
+							</div>
+						</li>
+						<li>
+							<a href=""><img src="__IMAGES__rmpp_03.png" alt=""></a>
+							<div class="bg">
+								<a href="" class="ljgd">了解更多</a>
+							</div>
+						</li>
+						<li>
+							<a href=""><img src="__IMAGES__rmpp_03.png" alt=""></a>
+							<div class="bg">
+								<a href="" class="ljgd">了解更多</a>
+							</div>
+						</li>
+						<li>
+							<a href=""><img src="__IMAGES__rmpp_03.png" alt=""></a>
+							<div class="bg">
+								<a href="" class="ljgd">了解更多</a>
+							</div>
+						</li>
+						<li>
+							<a href=""><img src="__IMAGES__rmpp_03.png" alt=""></a>
+							<div class="bg">
+								<a href="" class="ljgd">了解更多</a>
+							</div>
+						</li>
+						<li>
+							<a href=""><img src="__IMAGES__rmpp_03.png" alt=""></a>
+							<div class="bg">
+								<a href="" class="ljgd">了解更多</a>
+							</div>
+						</li>
+						<li>
+							<a href=""><img src="__IMAGES__rmpp_03.png" alt=""></a>
+							<div class="bg">
+								<a href="" class="ljgd">了解更多</a>
+							</div>
+						</li>
+
+						<div class="clear"></div>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+<include file="Common/footer" />
+	
+<script type="text/javascript" src="__JS__jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="__JS__jquery.SuperSlide.2.1.1.js"></script>
+<script type="text/javascript" src="__JS__js.js"></script>
+<script type="text/javascript">
+$(function(){
+	jQuery(".slideBox").slide({mainCell:".bd ul",autoPlay:true,effect:"fold",interTime:5000,trigger:"click"});
+	
+	var i =0;
+	function slide(){
+		$('.xh_list li').eq(i).removeClass('rm_on');
+		$('.rm_list li').eq(i).hide();
+		i < $('.xh_list li').length-1 ? i++ : i = 0;
+		$('.xh_list li').eq(i).addClass('rm_on');
+		$('.rm_list li').eq(i).fadeIn(688);
+	}
+	var timer = setInterval(slide,5000);
+	
+	$('.xh_list li').mouseenter(function(){
+		clearInterval(timer);
+		i = $(this).index();
+		$(this).addClass('rm_on').siblings().removeClass('rm_on');
+		$('.rm_list li').hide();
+		$('.rm_list li').eq(i).fadeIn(688);
+	});
+	
+	$('.xh_list li').mouseleave(function(){
+		timer = setInterval(slide,5000);
+	});
+	
+	$('.thi_list li').mouseover(function(){
+		$(this).addClass('thi_click').siblings().removeClass('thi_click');
+	});
+	$('.br_list li').mouseover(function(){
+		$(this).addClass('br_click').siblings().removeClass('br_click');
+	});
+	
+	var a =0;
+	function pinpai(){
+		$('.blx_list li').eq(a).removeClass('blx_click');
+		$('.blt_list li').fadeOut(588);
+		a < $('.blx_list li').length-1 ? a++ : a = 0;
+		$('.blx_list li').eq(a).addClass('blx_click');
+		$('.blt_list li').eq(a).fadeIn(688);
+	}
+	var time = setInterval(pinpai,5000);
+	
+	$('.blx_list li').mouseenter(function(){
+		clearInterval(time);
+		a = $(this).index();
+		$(this).addClass('blx_click').siblings().removeClass('blx_click');
+		$('.blt_list li').hide();
+		$('.blt_list li').eq(a).fadeIn(688);
+	});
+	
+	$('.blx_list li').mouseleave(function(){
+		time = setInterval(pinpai,5000);
+	});
+	
+	var third_nav_hide_timer = null;
+	$('.navMap').mouseenter(function(){
+		$('.third_nav_block').show();
+		$('.third_nav').hide();
+		$('.third_nav').eq($(this).index('.navMap')).show();
+		clearInterval(third_nav_hide_timer);
+	});
+	$('.navMap').mouseleave(function(){
+		third_nav_hide_timer = setTimeout(function(){			
+			$('.third_nav_block').hide();
+			$('.third_nav').eq($(this).index('.navMap')).hide();
+		},200);
+	});
+	$('.third_nav_block').mouseenter(function(){
+		clearInterval(third_nav_hide_timer);
+	});
+	$('.third_nav_block').mouseleave(function(){
+		$('.third_nav').hide();
+		$('.third_nav_block').hide();
+	});
+});
+</script>

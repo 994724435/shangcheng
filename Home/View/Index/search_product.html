@@ -1,0 +1,126 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="description" content="页面描述"/>
+		<meta name="keywords" content="关键字,关键字"/>
+		<meta name="robots" content="index,follow"/>
+		<meta name="renderer" content="webkit">
+		<title>宛美搜索</title>
+		<link rel="stylesheet" type="text/css" href="__CSS__page.css"/>
+		<link rel="stylesheet" type="text/css" href="__CSS__global.css"/>
+		<link rel="stylesheet" type="text/css" href="__CSS__goods.list.css"/>
+	</head>
+	<body>
+		<include file="Common/header" />
+		<div class="center-block">
+			<div class="search_bar cl">
+				<div class="fl">
+					<a href="">全部</a>
+					<span>&gt;</span>
+					<a href="">{$key}</a>
+					<span>&gt;</span>
+					<input type="txet" name="search" id="search" placeholder="酒" autocomplete="off" />
+				</div>
+				<div class="fr">共 {$count} 件相关商品</div>
+			</div>
+			<!-- <div class="table">
+				<div class="tr1 tr cl">
+					<div class="tdl fl">品牌</div>
+					<div class="tdr fl"><a href="">Martell/马爹利</a><a href="">郎</a><a href="">洋河</a><a href="">百岁堂</a><a href="">Moutai/茅台</a><a href="">五粮液</a><a href="">Lafite/拉菲</a><a href="">张裕</a><a href="">Hennessy/轩尼诗</a><a href="">泸州老窖</a><a href="">奔富</a><a href="">Johnnie</a><a href="">walker/尊尼获加</a><a href="">剑南春</a><a href="">水井坊</a><a href="">西凤</a><a href="">汾酒</a><a href="">古井贡</a><a href="">七斤嫂</a><a href="">酒鬼</a><a href="">牛栏山</a>
+						<div class="posa">
+							<a href="" class="k"><span>+</span> 多选</a>
+							<a href="">更多∨</a>
+						</div>
+					</div>
+				</div>
+				<div class="tr2 tr cl">
+					<div class="tdl fl">选购热点</div>
+					<div class="tdr fl"><a href="">原浆</a><a href="">礼盒装</a><a href="">整箱</a><a href="">干红</a><a href="">花雕</a><a href="">法国原瓶进口</a><a href="">西班牙原瓶进口</a><a href="">特曲</a><a href="">甜酒</a><a href="">洋酒</a><a href="">五至八年陈</a><a href="">解百纳</a><a href="">窖藏</a><a href="">陈酿</a><a href="">意大利原瓶进口</a><a href="">拉菲</a><a href="">限量珍藏</a><a href="">十年以上陈</a><a href="">女儿红</a><a href="">波尔多</a></div>
+				</div>
+				<div class="tr3 tr cl">
+					<div class="tdl fl">中国白酒</div>
+					<div class="tdr fl"><a href="">浓香型</a><a href="">酱香型</a><a href="">清香型</a><a href="">其他香型白酒</a></div>
+				</div>
+				<div class="tr4 tr cl">
+					<div class="tdl fl">葡萄美酒</div>
+					<div class="tdr fl"><a href="">红葡萄酒</a><a href="">香槟/起泡酒</a><a href="">白葡萄酒</a></div>
+				</div>
+				<div class="tr5 tr cl">
+					<div class="tdl fl">其他分类</div>
+					<div class="tdr fl"><a href="">暖身黄酒</a><a href="">洋酒烈酒</a><a href="">各地啤酒</a><a href="">配制酒</a></div>
+				</div>
+				<div class="tr6 tr cl">
+					<div class="tdl fl">净含量</div>
+					<div class="tdr fl"><a href="">3L</a><a href="">500ml</a><a href="">500mlX6瓶</a></div>
+				</div>
+				<div class="tr7 tr cl">
+					<div class="tdl fl">酒精度数</div>
+					<div class="tdr fl"><a href="">高度白酒（50%以上）</a><a href="">中度白酒（40%-50%）</a><a href="">低度白酒（40%以下）</a></div>
+				</div>
+				<div class="tr8 tr cl">
+					<div class="tdl fl">系列</div>
+					<div class="tdr fl"><a href="">蓝色经典之蓝</a><a href="">五粮液</a><a href="">普通装</a><a href="">百年泸州老窖窖龄90岁</a><a href="">东方娇子精酿级</a></div>
+				</div>
+			</div> -->
+			<!-- <div class="sort cl">
+				<a href="javascript:;" class="on fl">综合排序</a>
+				<a href="javascript:;" class="fl">人气</a>
+				<a href="javascript:;" class="fl">销量</a>
+				<a href="javascript:;" class="fl">信用</a>
+				<a href="javascript:;" class="fl">包邮</a>
+				<a href="javascript:;" class="wl fl">价格</a>
+				<input type="text" class="fl" value="￥" />
+				<span class="fl"> - </span>
+				<input type="text" class="fl" value="￥" />
+			</div> -->
+			<ul class="goods cl">
+				<if condition="$pro_list">
+					<foreach name="pro_list" item="val">
+					<li><a href="/index.php/Home/Index/product_detail.html?search={$val.pro_title}&pro_sku={$val.pro_sku}">
+						<img src="{$val.pro_thumb}" WIDTH="225" HEIGHT="240" />
+						<div class="infoTop cl">
+							<span class="fl l">¥{$val.pro_promotion_price}</span>
+						</div>
+						<p class="infoCenter"><?php echo str_cut($val['pro_title'],0,15); ?></p>
+						<p class="infoBottom">月成交 <span>{$val.pro_deal}</span> 笔评价 <span>{$val.pro_discuss}</span></p>
+					</a></li>
+					</foreach>
+				<else />
+					<div style="width:1200px;border:1px solid #eedcc7;height:80px;margin-top:20px;background:#fffce8;">
+						<img src="__IMAGES__jingtan.jpg" alt="" style="width:50px;float:left;margin:15px;">
+						<p style="line-height:80px;font-size:18px;">抱歉，没有找到与相关的商品。</p>
+					</div>
+				</if>
+			</ul>
+{$show}
+			<ul class="page_turn cl">
+				
+				<if condition="$page_num GT 1">
+				<li class="l8">共{$page_num}页</li>
+				<li class="l9">,到第</li>
+				<li class="l10"><input type="text" name="page_turn" placeholder="10" /></li>
+				<li class="l11"><input type="submit" name="submit_page_num" id="submit_page_num" value="确定" /></li>
+				</if>
+			</ul>
+			<div class="scrm cl">
+				<span class="fl">商城热卖</span>
+			</div>
+			<ul class="goods cl">
+				<foreach name="hot" item="val">
+					<li><a href="/index.php/Home/Index/product_detail.html?pro_sku={$val.pro_sku}">
+						<img src="{$val.pro_thumb}" style="width:225px;height:240px;" />
+						<div class="infoTop cl">
+							<span class="fl l">¥{$val.pro_promotion_price}</span>
+						</div>
+						<p class="infoCenter"><?php echo str_cut($val['pro_title'],0,10); ?></p>
+						<p class="infoBottom">成交<span>{$val.pro_deal}</span> 笔评价 <span>{$val.pro_discuss}</span></p>
+					</a></li>
+				</foreach>
+			</ul>
+		</div>
+	<include file="Common/footer" />
+<script type="text/javascript" src="__JS__jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="__JS__js.js"></script>

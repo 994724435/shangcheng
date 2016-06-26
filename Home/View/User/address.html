@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="页面描述"/>
+	<meta name="keywords" content="关键字,关键字"/>
+	<meta name="robots" content="index,follow"/>
+	<meta name="renderer" content="webkit">
+	<title>收货地址</title>
+	<link rel="stylesheet" href="__CSS__global.css">
+	<link rel="stylesheet" href="__CSS__address.css">
+</head>
+<body>
+	<include file="Common/header" />
+
+	<div class="NconWrapper center-block">
+	    <div class="m_left member_menu fl">
+			<div class="member_pic"><img src="{$member.vip_avatar}" style="width:115px;"/></div>
+			<p class="member_name">{$user}</p>
+			<ul class="member_info_list">
+				<li><a href="/index.php/Home/User/index">用户信息</a></li>
+				<li><a href="/index.php/Home/User/my_order">我的订单</a></li>
+				<li><a href="/index.php/Home/User/shopping_cart">购物车</a></li>
+				<li class="on"><a href="/index.php/Home/User/address">收货地址</a></li>
+				<!--<li><a href="">我的收藏</a></li>-->
+				<li><a href="/index.php/Home/User/comment">我的评论</a></li>
+				<li><a href="/index.php/Home/User/member_center">帐号信息</a></li>
+			</ul>
+		</div>
+
+	    <div class="NRight fr">
+	        <div class="rNTop">
+	            <span>地址管理</span>
+	        </div>
+
+	        <div class="dizhi">
+	        	<div class="addDizhi">
+	        		<a href="javascript:;">新增收货地址</a>
+	        	</div>
+	        	<div class="addressBox" style="display:none;">
+	        	 	<form action="" method="post">
+		                <div class="label">
+		                    <span class="fl"><em class="fontRes">*</em>详细地址：</span> 
+		                    <textarea placeholder="请填写详细街道地址" class="adTextarea" name="address"></textarea>
+		                </div>
+		                <div class="label">
+		                    <span class="fl">邮政编码：</span> 
+		                    <input type="text" placeholder="邮政编码" class="fl adInput adzip_code" name="zip_code">
+		                </div>
+		                <div class="label">
+		                    <span class="fl"><em class="fontRes">*</em>收货人姓名：</span> 
+		                    <input type="text" placeholder="长度不超过25个字符" class="fl adInput adname" name="name">
+		                </div>
+		                <div class="label">
+		                    <span class="fl "><em class="fontRes">*</em>手机号码：</span> 
+		                    <input type="text" placeholder="手机号码与固定电话必须填一项" class="fl adInput adtel" name="tel">
+		                </div>
+		                <div class="label">
+		                    <span class="fl">固定电话：</span> 
+		                    <input type="text" placeholder="区号" class="fl adInput adInd">
+		                    <input type="text" placeholder="电话号码" class="fl adInput">
+		                    <input type="text" placeholder="分机" class="fl adInput adInd">
+		                </div>
+
+		                <div class="clear"></div>
+		                <div class="adCheck">
+		                    <input type="checkbox"> 设为默认收货地址
+		                </div>
+
+		                <div class="adButton">
+		                    <input type="submit" value="保存" class="baocun fl adBu">
+		                    <input type="button" value="取消" class="quxiao fl adBu">
+		                    <div class="clear"></div>
+		                </div>
+					</form>
+	            </div>
+				
+				<if condition="$address_num NEQ 0">
+					<table class="addressTable">
+		                <tr>
+		                    <th>收货人</th>
+		                    <th>收货地址</th>
+		                    <th>邮编</th>
+		                    <th>联系电话</th>
+		                    <th>操作</th>
+		                </tr>
+		                <foreach name="address" item="val">
+		                	<tr>
+		                		<input type="hidden" name="" value="{$val.4}">
+			                    <td>{$val.0}</td>           
+			                    <td>{$val.1}</td>             
+			                    <td>{$val.3}</td>           
+			                    <td>{$val.2}</td>         
+			                    <td><if condition="$val['4'] EQ 0"><a href="" class="a_1">设为默认</a><else /><a href="javascript:;" class="a_1" style="color:#999;">设为默认</a></if> <a href="javascript:;" class="edit">编辑</a><a href="javascript:;" class="addel">删除</a></td>
+			                </tr>
+		                </foreach>
+		            </table>
+				</if>
+	            
+	        </div>
+	    </div>
+
+	    <div class="clear"></div>
+	</div>
+	<include file="Common/footer" />
+<script type="text/javascript" src="__JS__jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="__JS__js.js"></script>
+<script>
+	$('.addel').click(function(){
+		var a = $(this).parent().prevAll().eq(3).text();
+			b = $(this).parent().prevAll().eq(2).text();
+			c = $(this).parent().prevAll().eq(1).text();
+			d = $(this).parent().prevAll().eq(0).text();
+			e = $(this).parent().prevAll().eq(4).val();
+			address = a+'-'+b+'-'+d+'-'+c+'-'+e;
+		$.post('/index.php/Home/User/addel',{'address':address},function(data){
+			if(data){
+				location.reload();
+			}
+		},'json');
+	})
+	$('.addDizhi').click(function(){
+		$(this).next().css('display','block');
+	});
+	$('.quxiao').click(function(){
+		$('.adButton').parent().css('display','none');
+	});
+	$('.edit').click(function(){
+		var name = $(this).parent().prevAll().eq(3).text();
+			address = $(this).parent().prevAll().eq(2).text();
+			zip_code = $(this).parent().prevAll().eq(1).text();
+			tel = $(this).parent().prevAll().eq(0).text();
+		$('.addressBox').css('display','block');
+		$('.adTextarea').text(address);
+		$('.adzip_code').val(zip_code);
+		$('.adname').val(name);
+		$('.adtel').val(tel);
+	})
+</script>

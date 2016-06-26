@@ -1,0 +1,87 @@
+<div id="service">
+	<div class="service">
+		<div class="public">
+        	<div>大足服务</div>
+        	<div class="sp01"><span></span>Dazu service<span></span></div>
+		</div>
+		<div class="service01">
+			<div class="serv01">
+				<div class="sserv01"><div></div></div>
+				<h6>大足住宿</h6>
+			</div>
+
+			<div class="serv02">
+				<div class="sserv01"><div></div></div>
+				<h6>大足交通</h6>
+			</div>
+
+			<div class="serv03">
+				<div class="sserv01"><div></div></div>
+				<h6>大足投资</h6>
+			</div>
+
+			<div class="serv04">
+				<div class="sserv01"><div></div></div>
+				<h6>大足在线购买</h6>
+			</div>
+
+			<div class="serv05">
+				<div class="sserv01"><div></div></div>
+				<h6>大足餐馆</h6>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="foot">
+	<div class="foot">
+		<div class="ft01">
+			<foreach name="nav" item="val">
+			<a href="{$val.nav_url}" <?php if($val['nav_id']==1){echo "class=''";}else{echo "class='ml'";} ?>>{$val.nav_name}</a>
+			</foreach>
+		</div>
+		<p> ©页面版权所有：中国.重庆.大足旅游局 重庆艾斯顿文化传媒提供技术支持《中华人民共和国电信与信息服务业务经营许可证》渝ICP备07000141号</p>
+		<div class="ft02">
+			<img src="__IMAGES__ft01.gif" alt="">
+			<img src="__IMAGES__ft02.png" alt="" class="ml01">
+			<img src="__IMAGES__ft03.png" alt="" class="ml01">
+		</div>
+		<button id="scroll"></button>
+	</div>
+</div>
+<div id="left-nav">
+	<div class="left-nav">
+		<ul class="nav-content">
+			<li class="nct01"><a href=""><span class="ntt02"></span><span class="ntt01">住</span></a><>
+			<li class="nct02"><a href=""><span class="ntt02"></span><span class="ntt01">行</span></a><>
+			<li class="nct03"><a href=""><span class="ntt02"></span><span class="ntt01">游</span></a><>
+			<li class="nct04"><a href=""><span class="ntt02"></span><span class="ntt01">娱</span></a><>
+			<li class="nct05"><a href=""><span class="ntt02"></span><span class="ntt01">购</span></a><>
+			<li class="nct06"><a href=""><span class="ntt02"></span><span class="ntt01">吃</span></a><>
+		</ul>
+	</div>
+</div>
+<script type="text/javascript">
+	$(".nav-content li").mouseenter(function(){
+		$(this).css("background-color","#861117");
+		$(this).find(".ntt01").show();
+	});
+	$(".nav-content li").mouseleave(function(){
+		$(this).css("background-color","#696969");
+		$(this).find(".ntt01").hide();
+	});
+	$(function(){
+		showScroll();
+		function showScroll(){
+			$(window).scroll( function() { 
+				var scrollValue=$(window).scrollTop();
+				scrollValue > 100 ? $('div[class=scroll]').fadeIn():$('div[class=scroll]').fadeOut();
+			} );	
+			$('#scroll').click(function(){
+				$("html,body").animate({scrollTop:0},2000);	
+			});	
+		}
+	})
+</script>
+
+</body>
+</html>

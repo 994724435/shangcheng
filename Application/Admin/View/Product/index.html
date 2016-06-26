@@ -1,0 +1,282 @@
+<include file="Common/header" />
+//jquery获取前台pro_id
+<div class="rightfix">
+  <a class="home1"></a><a class="home_pass">产品管理</a><a class="home_now">产品列表</a>
+  <div class="clear"></div>
+  <div class="article_list" style="width:1100px;">
+    <div class="title">
+      <div class="span">选择分类</div>
+      <div id="dd" class="wrapper-dropdown-3" tabindex="1">
+        <span style="color:#e2e1e1;"><if condition="$cid neq 0">{$cate.cate_name}<else />未分类</if></span>
+      	<ul class="dropdown">
+          <li><a onclick="javascript:window.location.href='{:U('/Admin/Product/index')}'">未分类</a></li>
+          <foreach name="acate" item="val">
+      		  <li><a onclick="javascript:window.location.href='{:U('/Admin/Product/index',array('cid'=>$val['cate_id']))}'">{$val.cate_name}</a></li>
+          </foreach>
+      	</ul>
+      </div>
+      <div id="aa" class="wrapper-dropdown-3" tabindex="1">
+        <span style="color:#e2e1e1;"><?php if($cid && $sid){echo $ccate['cate_name'];}else{echo "未分类";} ?></span>
+        <if condition="$cid neq 0">
+          <ul class="dropdown">
+            <li><a onclick="javascript:window.location.href='{:U('/Admin/Product/index',array('cid'=>$cate['cate_id']))}'">未分类</a></li>
+            <foreach name="scate" item="val">
+            <li><a onclick="javascript:window.location.href='{:U('/Admin/Product/index',array('cid'=>$cate['cate_id'],'sid'=>$val['cate_id']))}'">{$val.cate_name}</a></li>
+            </foreach>
+          </ul>
+        <else />
+          <ul class="dropdown">
+            <li><a onclick="javascript:window.location.href='{:U('/Admin/Product/index',array('cid'=>$cate['cate_id']))}'">未分类</a></li>
+          </ul>
+        </if>
+      </div>
+      <form class="allen" action="{:U('/Admin/Product/index')}"> 
+          <button type="submit"><span class="glyphicon glyphicon-search"></span></button>
+          <input type="text" value="" class="search" placeholder="输入关键字搜索" name="q" id="searchBox" >
+      </form>
+      <div class="clear"></div>
+    </div>
+    <form action="{:U('Admin/Product/formDelete')}" style="margin:20px 20px;" method="post">
+      <table>
+        <tr class="table_title">
+          <td class="table1"><input id="allbox1" type="checkbox" />全选</td>
+          <td class="table4">标题</td>
+          <td class="table2">操作</td>
+          <td class="table3">库存</td>
+          <td class="table3">分类</td>
+        </tr>
+        <div class="clear"></div>
+        <foreach name="news" item="value">
+        <tr class="table_list">
+          <td class="table1"><input type="checkbox" value="{$value['pro_id']}" name="idarr[]"/></td>
+          <td class="table4">{$value.pro_title}</td>
+          <td div class="table2">
+          <if condition="$value['pro_isshow'] eq 1">
+              <a class="aa1" href="javascript:;" isshow="1" artID="{$value.pro_id}" style="display:inline">隐藏</a><a href="javascript:;" class="aa4" isshow="0" artID="{$value.pro_id}" style="display:none" >显示</a>
+              <else /><a class="aa1" href="javascript:;" isshow="0" artID="{$value.pro_id}" style="display:none">隐藏</a><a href="javascript:;" class="aa4" isshow="0" artID="{$value.pro_id}" style="display:inline" >显示</a>
+            </if> /  <a href="{:U('/Admin/Product/editor',array('aid'=>$value['pro_id']))}" class="aa2">编辑</a> / 
+            <a href="javascript:;" class="aa5" artID="{$value.pro_id}">商品属性<input type="hidden" name="pro_id1" class="pro_id1" id='pro_id1' value="{$value['pro_id']}"> </a> / 
+            <a href="{:U('/Admin/Product/propic',array('aid'=>$value['pro_id']))}" class="aa2">商品图</a>
+             / <a href="{:U('/Admin/Product/delete',array('aid'=>$value['pro_id']))}" class="aa3">删除</a>/<a class="pinglun" href="{:U('/Admin/Product/comment',array('pid'=>$value['pro_id']))}"><?php if($value['mentNum']){echo "评论(".$value['mentNum'].")";}else{echo "评论(0)";} ?></a></td>
+          <td class="table3"><input type="text" value="{$value.pro_stocknum}" artID="{$value.pro_id}" class="order"/></td>
+          <td class="table3">{$value.cate_name}</td>
+        </tr>
+        <tr style="display:none;float:right;">
+          <td>
+            <div style="width:100%;background:#ccc;">
+              <table class="attr">
+                <tr>              	
+                  <td>属性名</td>
+                  <td>属性值1</td>
+                  <td>属性值2</td>
+                  <td>属性值3</td>
+                  <td>属性值4</td>
+                  <td>属性值5</td>
+                  <td>属性值6</td>
+                  <td>属性值7</td>
+                  <td>属性值8</td>
+                  <td>属性值9</td>
+                </tr>
+                <tr>
+                  <td><input type="text" style="width:50px;" value=""></td>
+                  <td><input type="text" style="width:80px;" value=""></td>
+                  <td><input type="text" style="width:80px;" value=""></td>
+                  <td><input type="text" style="width:80px;" value=""></td>
+                  <td><input type="text" style="width:80px;" value=""></td>
+                  <td><input type="text" style="width:80px;" value=""></td>
+                  <td><input type="text" style="width:80px;" value=""></td>
+                  <td><input type="text" style="width:80px;" value=""></td>
+                  <td><input type="text" style="width:80px;" value=""></td>
+                  <td><input type="text" style="width:80px;" value=""></td>
+                  <td><input type="button" value="添加属性" class="attribute"></td>
+                </tr>
+              </table>
+            </div>
+          </td>
+        </tr>
+        <div class="clear"></div>
+        </foreach>
+      </table>
+      <div class="pagelist">
+          <button type="submit" class="delete">删除所选</button><a class="save">保存修改</a>
+          <div class="pagenum">{$show}</div>
+        </div>
+      </form>
+    </div>
+  </div>
+      <!-- 权限判断 -->
+      <input type="hidden" name="power" value="{$current_admin.admin_power}">
+      
+      <script type="text/javascript">
+      	$('.aa5').click(function(){  // ***  返回商品属性数组  ****//
+      		 var 
+      		 		product_id= $(this).find('input[type="hidden"]').val();   		 	
+            	  $.post('/Admin/Product/index',
+								{'product_id':product_id},function(data){
+                if(data){                 
+                  alert(data);  						 
+                }
+              })
+            
+      				
+      		 		
+      		
+      	});
+      
+      
+        $('.attribute').click(function(){
+          $(this).parent().parent().parent().append(
+          	'<tr><td><input type="text" name="attribute1" style="width:50px;"></td><td><input type="text" name="attribute2" style="width:80px;"></td> <td><input type="text" name="attribute3" style="width:80px;"></td> <td><input type="text" name="attribute4" style="width:80px;"></td> <td><input type="text" name="attribute5" style="width:80px;"></td> <td><input type="text" name="attribute6" style="width:80px;"></td> <td><input type="text" name="attribute7" style="width:80px;"></td> <td><input type="text" name="attribute8" style="width:80px;"></td> <td><input type="text" name="attribute9" style="width:80px;"></td> <td><input type="text" name="attribute10" style="width:80px;"></td> <td><input type="button" value="确认" class="sub" /></td></tr>');
+           	
+            $('.sub').click(function(){
+            	
+              var
+                  pro_id=$(this).parent().parent().parent().parent().parent().parent().parent().prev().find('input[type="hidden"]').val();                  
+              		attr0 = $(this).parent().siblings().find('input[name="attribute0"]').val();
+              		attr1 = $(this).parent().siblings().find('input[name="attribute1"]').val();
+                  attr2 = $(this).parent().siblings().find('input[name="attribute2"]').val();
+                  attr3 = $(this).parent().siblings().find('input[name="attribute3"]').val();
+                  attr4 = $(this).parent().siblings().find('input[name="attribute4"]').val();
+                  attr5 = $(this).parent().siblings().find('input[name="attribute5"]').val();
+                  attr6 = $(this).parent().siblings().find('input[name="attribute6"]').val();
+                  attr7 = $(this).parent().siblings().find('input[name="attribute7"]').val();
+                  attr8 = $(this).parent().siblings().find('input[name="attribute8"]').val();
+                  attr9 = $(this).parent().siblings().find('input[name="attribute9"]').val();
+                  attr10 = $(this).parent().siblings().find('input[name="attribute10"]').val();
+              $.post('/Admin/Product/test',
+{'pro_id':pro_id,'attr1':attr1,'attr2':attr2,'attr3':attr3,'attr4':attr4,'attr5':attr5,'attr6':attr6,'attr7':attr7,'attr8':attr8,'attr9':attr9,'attr10':attr10},function(data){
+                if(data){
+                  alert(data);
+                }
+              })
+            })
+        });
+        $('.aa5').click(function(){
+          var dis = $(this).parent().parent().next().css('display');
+          if(dis == 'none'){
+            $(this).parent().parent().next().css('display','block');
+          }else{
+             $(this).parent().parent().next().css('display','none');
+          }
+          
+        })
+        var adm_power = $("input[name='power']").val();
+        if(adm_power.indexOf('产品列表') === -1){
+          $('.order,.aa1,.aa4').addClass('friendShip1_notice_block show_block');
+          $('.aa2,.aa3,.pinglun').addClass('friendShip1_notice_block show_block').attr('href','javascript:;');
+          $('.delete').addClass('friendShip1_notice_block show_block').attr('type','button'); 
+        }else{
+          var oldOrder;
+          $('.order').focus(function(){
+            oldOrder = $(this).val();
+          })
+          console.log(oldOrder);
+          $('.order').blur(function(){
+            var order = $(this).val();
+            var id = $(this).attr('artID');
+            $.post('/Admin/Product/order',{'oldOrder':oldOrder,'order':order,'id':id},function(data){
+              // console.log(data);
+              if(!data){
+                return false;
+              }  
+            },'json');
+          })
+          $('.aa4').click(function(){
+            var show = $(this).attr('isshow');
+            var id = $(this).attr('artID');
+            $.post('/Admin/Product/isshow',{'show':show,'id':id},function(data){
+              if(data == false){
+                return false;
+              }
+            },'json')
+          })
+          $('.aa1').click(function(){
+            var show = $(this).attr('isshow');
+            var id = $(this).attr('artID');
+            $.post('/Admin/Product/isshow',{'show':show,'id':id},function(data){
+              if(data == false){
+                return false;
+              }
+            },'json')
+          });
+          $(function(){
+            $(".aa1").click(
+              function(){
+              $(this).css("display","none");
+              $(this).next().css("display","inline-block");
+              }
+            );
+          });
+
+          $(function(){
+            $(".aa4").click(
+              function(){
+              $(this).css("display","none");
+              $(this).prev().css("display","inline-block");
+              }
+            );
+          });
+        }
+	function DropDown(el) {
+	this.dd = el;
+	this.placeholder = this.dd.children('span');
+	this.opts = this.dd.find('ul.dropdown > li');
+	this.val = '';
+	this.index = -1;
+	this.initEvents();
+	}
+	DropDown.prototype = {
+	initEvents : function() {
+	var obj = this;
+	
+	obj.dd.on('click', function(event){
+	$(this).toggleClass('active');
+	return false;
+	});
+	
+	obj.opts.on('click',function(){
+	var opt = $(this);
+	obj.val = opt.text();
+	obj.index = opt.index();
+	obj.placeholder.text(obj.val);
+	});
+	},
+	getValue : function() {
+	return this.val;
+	},
+	getIndex : function() {
+	return this.index;
+	}
+	}
+	
+	$(function() {
+	
+	var dd = new DropDown( $('#dd') );
+  var aa = new DropDown( $('#aa') );
+	
+	$(document).click(function() {
+	// all dropdowns
+	$('.wrapper-dropdown-3').removeClass('active');
+	});
+	
+	});
+
+
+$("#allbox1").click(function(){    
+    if (this.checked){
+		$(".rightfix :checkbox").each(function(){
+			this.checked=true;
+		});
+	}else{
+		$(".rightfix :checkbox").each(function(){
+			this.checked=false;
+		});
+	}
+});
+</script>
+
+<div class="clear"></div>
+
+<div class="bottom">声明：系统开发版权归重庆艾斯顿文化传媒有限公司所有，翻版必究</div>
+
+<include file="Common/alert" />
